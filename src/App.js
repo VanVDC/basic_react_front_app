@@ -37,10 +37,11 @@ class App extends React.Component {
     this.setState({ route: route });
   };
   render() {
+    const { isSignedIn, imageUrl, route } = this.state;
     return (
       <div className="App">
         <Navigation
-          isSignedIn={this.state.isSignedIn}
+          isSignedIn={isSignedIn}
           onRouteChange={this.onRouteChange}
         />
         {this.state.route === "home" ? (
@@ -52,9 +53,9 @@ class App extends React.Component {
               onInputChange={this.onInputChange}
             />
 
-            <FaceRecognition imageUrl={this.state.imageUrl} />
+            <FaceRecognition imageUrl={imageUrl} />
           </div>
-        ) : this.state.route === "signin" ? (
+        ) : route === "signin" ? (
           <Signin onRouteChange={this.onRouteChange} />
         ) : (
           <Register onRouteChange={this.onRouteChange} />
