@@ -17,7 +17,7 @@ class App extends React.Component {
       input: "",
       imageUrl: "",
       route: "signin",
-      isSignedIn: "false"
+      isSignedIn: false
     };
   }
   onInputChange = event => {
@@ -39,7 +39,10 @@ class App extends React.Component {
   render() {
     return (
       <div className="App">
-        <Navigation onRouteChange={this.onRouteChange} />
+        <Navigation
+          isSignedIn={this.state.isSignedIn}
+          onRouteChange={this.onRouteChange}
+        />
         {this.state.route === "home" ? (
           <div>
             <Logo />
